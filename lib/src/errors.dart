@@ -16,3 +16,7 @@ class ConsumerError extends Errors {
 class SelectorError extends Errors {
   const SelectorError(String message) : super(message);
 }
+
+class BlocError extends Errors {
+  const BlocError(String message) : super(message);
+}
