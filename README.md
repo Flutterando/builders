@@ -14,7 +14,7 @@ You can also provide the git repository as source instead, to try out the newest
 
 ```dart
 dependencies:
-  flutter_modular:
+  builders:
     git:
       url: https://github.com/Flutterando/builders
 ```
