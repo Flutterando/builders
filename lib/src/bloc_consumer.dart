@@ -39,7 +39,7 @@ class _BlocConsumerState<S extends Cubit<V>, V>
   @override
   void initState() {
     super.initState();
-    _stream = widget.stream ?? Builders?.si?.call<S>();
+    _stream = widget.stream ?? Builders.si?.call<S>();
     if (_stream == null) {
       throw BlocError(
         'Value (${V.toString()}) not found or Not found in System Injector. Please register your object in System Injector',

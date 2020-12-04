@@ -32,7 +32,7 @@ class _SelectorState<T extends ChangeNotifier, D>
   @override
   void initState() {
     super.initState();
-    _value = widget.value ?? Builders?.si?.call<T>();
+    _value = widget.value ?? Builders.si?.call<T>();
     if (_value == null) {
       throw SelectorError(
         'Value (${T.toString()}) not found or Not found in System Injector. Please register your object in System Injector',
