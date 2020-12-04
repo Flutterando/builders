@@ -4,10 +4,10 @@ import '../builders.dart';
 import 'errors.dart';
 
 class Consumer<T extends ChangeNotifier> extends StatefulWidget {
-  final Widget Function(BuildContext context, T value) builder;
-  final T value;
+  final Widget Function(BuildContext context, T? value) builder;
+  final T? value;
 
-  const Consumer({Key key, @required this.builder, this.value})
+  const Consumer({Key? key, required this.builder, this.value})
       : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class Consumer<T extends ChangeNotifier> extends StatefulWidget {
 }
 
 class _ConsumerState<T extends ChangeNotifier> extends State<Consumer<T>> {
-  T _value;
+  T? _value;
 
   void _listener() {
     setState(() {});
@@ -30,13 +30,13 @@ class _ConsumerState<T extends ChangeNotifier> extends State<Consumer<T>> {
         'Value (${T.toString()}) not found or Not found in System Injector. Please register your object in System Injector',
       );
     }
-    _value.addListener(_listener);
+    _value?.addListener(_listener);
   }
 
   @override
   void dispose() {
     super.dispose();
-    _value.removeListener(_listener);
+    _value?.removeListener(_listener);
   }
 
   @override

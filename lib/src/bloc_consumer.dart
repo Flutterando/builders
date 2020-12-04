@@ -8,12 +8,12 @@ import 'package:bloc/bloc.dart';
 import 'errors.dart';
 
 class BlocConsumer<S extends Cubit<V>, V> extends StatefulWidget {
-  final Widget Function(BuildContext context, V state) builder;
-  final S stream;
+  final Widget Function(BuildContext context, V? state) builder;
+  final S? stream;
 
   const BlocConsumer({
-    Key key,
-    this.builder,
+    Key? key,
+    required this.builder,
     this.stream,
   }) : super(key: key);
 
@@ -23,10 +23,10 @@ class BlocConsumer<S extends Cubit<V>, V> extends StatefulWidget {
 
 class _BlocConsumerState<S extends Cubit<V>, V>
     extends State<BlocConsumer<S, V>> {
-  S _stream;
-  V _state;
+  S? _stream;
+  V? _state;
 
-  StreamSubscription<V> _subscription;
+  late StreamSubscription<V> _subscription;
 
   void _listener(V newState) {
     if (newState != _state) {
@@ -45,8 +45,8 @@ class _BlocConsumerState<S extends Cubit<V>, V>
         'Value (${V.toString()}) not found or Not found in System Injector. Please register your object in System Injector',
       );
     }
-    _state = _stream.state;
-    _subscription = _stream.listen(_listener);
+    _state = _stream!.state;
+    _subscription = _stream!.listen(_listener);
   }
 
   @override

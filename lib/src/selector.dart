@@ -4,12 +4,12 @@ import '../builders.dart';
 import 'errors.dart';
 
 class Selector<T extends ChangeNotifier, D> extends StatefulWidget {
-  final Widget Function(BuildContext context, D value) builder;
-  final D Function(T value) selector;
-  final T value;
+  final Widget Function(BuildContext context, D? value) builder;
+  final D Function(T? value) selector;
+  final T? value;
 
   const Selector(
-      {Key key, this.value, @required this.builder, @required this.selector})
+      {Key? key, this.value, required this.builder, required this.selector})
       : super(key: key);
 
   @override
@@ -18,8 +18,8 @@ class Selector<T extends ChangeNotifier, D> extends StatefulWidget {
 
 class _SelectorState<T extends ChangeNotifier, D>
     extends State<Selector<T, D>> {
-  T _value;
-  D _selector;
+  T? _value;
+  D? _selector;
   void _listener() {
     var newSelector = widget.selector(_value);
     if (newSelector != _selector) {
@@ -39,13 +39,13 @@ class _SelectorState<T extends ChangeNotifier, D>
       );
     }
     _selector = widget.selector(_value);
-    _value.addListener(_listener);
+    _value?.addListener(_listener);
   }
 
   @override
   void dispose() {
     super.dispose();
-    _value.removeListener(_listener);
+    _value?.removeListener(_listener);
   }
 
   @override
