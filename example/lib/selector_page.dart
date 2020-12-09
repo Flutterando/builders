@@ -5,9 +5,9 @@ import 'package:get_it/get_it.dart';
 import 'counter.dart';
 
 class SelectorPage extends StatefulWidget {
-  SelectorPage({Key key, this.title}) : super(key: key);
+  SelectorPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _SelectorPageState createState() => _SelectorPageState();
@@ -28,7 +28,7 @@ class _SelectorPageState extends State<SelectorPage> {
               'You have pushed the button this many times:',
             ),
             Selector<Counter, int>(
-                selector: (counter) => counter.value,
+                selector: (counter) => counter?.value ?? 0,
                 builder: (context, value) {
                   return Text(
                     '$value',

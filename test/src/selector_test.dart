@@ -24,18 +24,18 @@ class MyMockChangeNotifier2 extends ChangeNotifier {
 }
 
 main() {
-  MyMockChangeNotifier counterValue;
-  SystemInjector si;
+  MyMockChangeNotifier? counterValue;
+  SystemInjector? si;
 
   setUp(() {
     counterValue = MyMockChangeNotifier();
     si = SystemInjector();
-    si.register(counterValue);
-    Builders.systemInjector(si.get);
+    si?.register(counterValue);
+    Builders.systemInjector(si?.get);
   });
 
   tearDown(() {
-    si.dispose();
+    si?.dispose();
     Builders.systemInjector(null);
   });
 
@@ -45,21 +45,21 @@ main() {
       MaterialApp(
         home: Selector<MyMockChangeNotifier, int>(
           value: counterValue,
-          selector: (value) => value.counter,
+          selector: (value) => value?.counter ?? 0,
           builder: (context, selector) {
             return Text("$selector");
           },
         ),
       ),
     );
-    counterValue.increment();
+    counterValue?.increment();
     await tester.pump();
     expect(find.text('1'), findsOneWidget);
-    counterValue.increment();
+    counterValue?.increment();
     await tester.pump();
     expect(find.text('2'), findsOneWidget);
-    counterValue.counter = 2;
-    counterValue.notifyListeners();
+    counterValue?.counter = 2;
+    counterValue?.notifyListeners();
     await tester.pump();
     expect(find.text('2'), findsOneWidget);
   });
@@ -69,14 +69,14 @@ main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Selector<MyMockChangeNotifier, int>(
-          selector: (value) => value.counter,
+          selector: (value) => value?.counter ?? 0,
           builder: (context, selector) {
             return Text("$selector");
           },
         ),
       ),
     );
-    counterValue.increment();
+    counterValue?.increment();
     await tester.pump();
     final number1 = find.text('1');
     expect(number1, findsOneWidget);
@@ -86,7 +86,7 @@ main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Selector<MyMockChangeNotifier2, int>(
-            selector: (value) => value.counter,
+            selector: (value) => value?.counter ?? 0,
             builder: (context, value) {
               return Text("$value");
             },

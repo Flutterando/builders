@@ -25,18 +25,18 @@ class MyMockChangeNotifier2 extends ChangeNotifier {
 }
 
 main() {
-  MyMockChangeNotifier counterValue;
-  SystemInjector si;
+  MyMockChangeNotifier? counterValue;
+  SystemInjector? si;
 
   setUp(() {
     counterValue = MyMockChangeNotifier();
     si = SystemInjector();
-    si.register(counterValue);
-    Builders.systemInjector(si.get);
+    si?.register(counterValue);
+    Builders.systemInjector(si?.get);
   });
 
   tearDown(() {
-    si.dispose();
+    si?.dispose();
     Builders.systemInjector(null);
   });
 
@@ -47,15 +47,15 @@ main() {
         home: Consumer<MyMockChangeNotifier>(
           value: counterValue,
           builder: (context, value) {
-            return Text("${value.counter}");
+            return Text("${value?.counter}");
           },
         ),
       ),
     );
-    counterValue.increment();
+    counterValue?.increment();
     await tester.pump();
     expect(find.text('1'), findsOneWidget);
-    counterValue.increment();
+    counterValue?.increment();
     await tester.pump();
     expect(find.text('2'), findsOneWidget);
   });
@@ -66,12 +66,12 @@ main() {
       MaterialApp(
         home: Consumer<MyMockChangeNotifier>(
           builder: (context, value) {
-            return Text("${value.counter}");
+            return Text("${value?.counter}");
           },
         ),
       ),
     );
-    counterValue.increment();
+    counterValue?.increment();
     await tester.pump();
     final number1 = find.text('1');
     expect(number1, findsOneWidget);

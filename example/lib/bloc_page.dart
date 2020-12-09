@@ -5,9 +5,9 @@ import 'package:get_it/get_it.dart';
 import 'counter_bloc.dart';
 
 class BlocPage extends StatefulWidget {
-  BlocPage({Key key, this.title}) : super(key: key);
+  BlocPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _BlocPageState createState() => _BlocPageState();

@@ -19,18 +19,18 @@ class MyBloc2 extends Cubit<int> {
 }
 
 main() {
-  MyCubit cubit;
-  SystemInjector si;
+  MyCubit? cubit;
+  SystemInjector? si;
 
   setUp(() {
     cubit = MyCubit();
     si = SystemInjector();
-    si.register(cubit);
-    Builders.systemInjector(si.get);
+    si?.register(cubit);
+    Builders.systemInjector(si?.get);
   });
 
   tearDown(() {
-    si.dispose();
+    si?.dispose();
     Builders.systemInjector(null);
   });
 
@@ -46,10 +46,10 @@ main() {
         ),
       ),
     );
-    cubit.increment();
+    cubit?.increment();
     await tester.pump();
     expect(find.text('1'), findsOneWidget);
-    cubit.increment();
+    cubit?.increment();
     await tester.pump(Duration(milliseconds: 800));
     expect(find.text('2'), findsOneWidget);
   });
@@ -65,7 +65,7 @@ main() {
         ),
       ),
     );
-    cubit.increment();
+    cubit?.increment();
     await tester.pump();
     final number1 = find.text('1');
     expect(number1, findsOneWidget);
