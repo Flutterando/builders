@@ -5,9 +5,9 @@ import 'package:get_it/get_it.dart';
 import 'counter.dart';
 
 class ChangeNotifierPage extends StatefulWidget {
-  ChangeNotifierPage({Key key, this.title}) : super(key: key);
+  ChangeNotifierPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _ChangeNotifierPageState createState() => _ChangeNotifierPageState();
@@ -30,7 +30,7 @@ class _ChangeNotifierPageState extends State<ChangeNotifierPage> {
             Consumer<Counter>(
               builder: (context, counter) {
                 return Text(
-                  '${counter.value}',
+                  '${counter?.value}',
                   style: Theme.of(context).textTheme.headline4,
                 );
               },

@@ -9,9 +9,10 @@ import 'counter.dart';
 import 'counter_bloc.dart';
 
 void main() {
-  GetIt.I.registerSingleton(Counter());
-  GetIt.I.registerSingleton(CounterBloc());
-  Builders.systemInjector(GetIt.I.get);
+  GetIt?.I.registerSingleton(Counter());
+  GetIt?.I.registerSingleton(CounterBloc());
+
+  Builders.systemInjector(GetIt?.I.get);
 
   runApp(MyApp());
 }

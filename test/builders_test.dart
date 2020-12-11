@@ -16,8 +16,8 @@ void main() {
     si.register('Test');
     si.register(1.0);
     Builders.systemInjector(si.get);
-    expect(Builders.si<String>(), 'Test');
-    expect(Builders.si<double>(), 1.0);
+    expect(Builders.si?.call<String>(), 'Test');
+    expect(Builders.si?.call<double>(), 1.0);
   });
 }
 
@@ -32,7 +32,7 @@ class SystemInjector {
     _injection.clear();
   }
 
-  T get<T>() {
+  T? get<T extends Object>() {
     return _injection[T];
   }
 }
