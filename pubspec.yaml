@@ -1,13 +1,13 @@
 name: builders
 description: Use Consumer, Select and BlocConsumer in any System Injector.
-version: 2.0.0
+version: 2.0.1
 homepage: https://github.com/Flutterando/builders
 
 environment:
   sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
-  bloc: ^7.0.0-nullsafety.2
+  bloc: ^7.0.0-nullsafety.4
   nested: ">=1.0.0 <2.0.0"
   flutter:
     sdk: flutter

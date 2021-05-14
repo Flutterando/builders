@@ -35,8 +35,8 @@ class _ConsumerState<T extends ChangeNotifier> extends State<Consumer<T>> {
 
   @override
   void dispose() {
-    super.dispose();
     _value?.removeListener(_listener);
+    super.dispose();
   }
 
   @override
