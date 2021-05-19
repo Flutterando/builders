@@ -45,7 +45,7 @@ class _SelectorState<T extends ChangeNotifier, D>
   @override
   void dispose() {
     super.dispose();
-    _value?.removeListener(_listener);
+    //_value?.removeListener(_listener);
   }
 
   @override
