@@ -21,8 +21,8 @@ environment:
   sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
-  bloc: ^7.0.0-nullsafety.0
-  get_it: 6.0.0-nullsafety.1
+  bloc: ^7.0.0-nullsafety.4
+  get_it: 7.1.3
   builders: 
     path: ../
   flutter:

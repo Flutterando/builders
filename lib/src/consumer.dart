@@ -35,8 +35,8 @@ class _ConsumerState<T extends ChangeNotifier> extends State<Consumer<T>> {
 
   @override
   void dispose() {
+    //_value?.removeListener(_listener); // Don't call removeListener after object was disposed. Disposing of ChangeNotifier should be treated by the Injection framework
     super.dispose();
-    _value?.removeListener(_listener);
   }
 
   @override
